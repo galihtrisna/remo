@@ -23,7 +23,8 @@ return new class extends Migration
             $table->integer('seats');
             $table->string('fuel');
             $table->integer('cc');
-            $table->string('description');
+            $table->longtext('description');
+            $table->integer('price');
             $table->timestamps();
         });
     }
