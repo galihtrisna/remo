@@ -12,4 +12,9 @@ class Costumer extends Model
     protected $fillable = [
         'id_user', 'phone_number', 'address', 'date_of_birth', 'driving_license'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -21,10 +21,10 @@ return new class extends Migration
             $table->datetime('pickup_time');
             $table->integer('rental_time');
             $table->string('status');
-            $table->datetime('start_rental'); 
-            $table->datetime('end_rental'); 
-            $table->integer('price');
-            $table->string('return_code');
+            $table->datetime('start_rental')->nullable(); 
+            $table->datetime('end_rental')->nullable(); 
+            $table->integer('price')->nullable();
+            $table->string('return_code')->nullable();
             $table->timestamps(); 
         });
     }
