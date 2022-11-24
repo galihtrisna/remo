@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Car;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -19,6 +20,16 @@ class OrderController extends Controller
         ], 200);
     }
 
+    public function show($id)
+    {
+        $data = Order::find($id);
+        if($data){
+            return $data;
+        }else{
+            return ["message" => "Data not found"];
+        }
+    }
+
     public function make_order(Request $request)
     {
         $message = [
@@ -26,7 +37,6 @@ class OrderController extends Controller
             'integer' => ':attribute must contain an integer',
         ];
         $validate = Validator::make($request->all(), [
-            'id_costumer' => 'required|integer',
             'id_car' => 'required|integer',
             'pickup_time' => 'required',
             'rental_time' => 'required|integer',
@@ -56,9 +66,11 @@ class OrderController extends Controller
             $this->generateUniqueCode();
         }
 
+        $id_user = auth()->user()->id;
+
         $data = Order::create([
             "order_code" => $code,
-            "id_costumer" => $request->id_costumer,
+            "id_costumer" => $id_user,
             "id_car" => $request->id_car,
             "pickup_time" => $request->pickup_time,
             "rental_time" => $request->rental_time,
