@@ -47,7 +47,7 @@ Route::middleware('auth:sanctum')->group(function(){
     // order
     Route::get('/order/{id}', [OrderController::class, 'show']);
     Route::post('/order/make_order', [OrderController::class, 'make_order']);
-    Route::post('/order/end_rental/{id}', [OrderController::class, 'end_rental']); 
+    Route::put('/order/end_rental/{id}', [OrderController::class, 'end_rental']); 
     // cancel
     Route::post('/cancel', [CancelController::class, 'cancel']);
     Route::get('/cancel/{id}', [CancelController::class, 'reason']);
