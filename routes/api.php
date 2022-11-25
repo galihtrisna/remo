@@ -54,7 +54,7 @@ Route::middleware('auth:sanctum')->group(function(){
     // costumer
     Route::get('/costumer/myprofile', [CostumerController::class, 'my_profile']);
     Route::post('/costumer', [CostumerController::class, 'add_costumer']);
-    Route::put('/costumer/update', [CostumerController::class, 'update']);
+    Route::post('/costumer/update', [CostumerController::class, 'update']);
     // auth
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/costumer', [CostumerController::class, 'add_costumer']);
